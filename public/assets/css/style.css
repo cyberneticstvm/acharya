@@ -1,0 +1,18 @@
+.req::after{
+    content: '*';
+    color: red;
+    font-weight: 500;
+    font-size: medium;
+}
+.page-item .page-link, .page-item span{
+    color: #fff;
+}
+.navbar-vertical .navbar-nav .nav-item .collapse .nav .nav-item .nav-link, .navbar-vertical .navbar-nav .nav-item .collapsing .nav .nav-item .nav-link{
+    font-size: .9rem;
+    position: inherit !important;
+    color: #344767 !important;
+}
+.navbar-vertical .navbar-nav .nav-item .collapse .nav .nav-item .nav-link:hover, .navbar-vertical .navbar-nav .nav-item .collapsing .nav .nav-item .nav-link:hover{
+    background-color: var(--bs-gray-200);
+    /*color: #fff !important;*/
+}
