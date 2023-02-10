@@ -122,7 +122,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white " href="/batch">
+                <a class="nav-link text-white " href="/student-batch">
+                  <i class="fa fa-arrows-h sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student => Batch</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/attendance">
                   <i class="fa fa-calendar sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Attendance</span>
                 </a>

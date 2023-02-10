@@ -64,7 +64,7 @@ class UserController extends Controller
     public function create()
     {
         $branches = Branch::all();
-        $status = DB::table('status')->get();
+        $status = DB::table('status')->where('category', 'user')->get();
         $roles = DB::table('user_roles')->get();
         return view('user.create', compact('branches', 'status', 'roles'));
     }
@@ -113,7 +113,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $branches = Branch::all();
-        $status = DB::table('status')->get();
+        $status = DB::table('status')->where('category', 'user')->get();
         $roles = DB::table('user_roles')->get();
         return view('user.edit', compact('user', 'branches', 'status', 'roles'));
     }

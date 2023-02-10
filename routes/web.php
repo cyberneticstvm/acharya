@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\StudentBatchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,5 +67,8 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/batch/edit/{id}', [BatchController::class, 'edit'])->name('batch.edit');
     Route::put('/batch/edit/{id}', [BatchController::class, 'update'])->name('batch.update');
     Route::delete('/batch/delete/{id}', [BatchController::class, 'destroy'])->name('batch.delete');
+
+    Route::get('/student-batch/create', [StudentBatchController::class, 'create'])->name('student.batch.create');
+    Route::post('/student-batch/create', [StudentBatchController::class, 'store'])->name('student.batch.save');
 });
 

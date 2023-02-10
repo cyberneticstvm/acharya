@@ -113,6 +113,23 @@
                                     <small class="text-danger">{{ $errors->first('fee') }}</small>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="req">Branch</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="branch">
+                                        <option value="">Select</option>
+                                        @forelse($branches as $key => $branch)
+                                            <option value="{{ $branch->id }}" {{ ($branch->id == $student->branch) ? 'selected' : '' }}>{{ $branch->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('branch')
+                                    <small class="text-danger">{{ $errors->first('branch') }}</small>
+                                @enderror
+                            </div>
                         </div>                        
                     </div>
                     <div class="text-center">

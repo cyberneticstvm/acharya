@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Branch;
+use App\Models\Batch;
+use DB;
 
 class StudentController extends Controller
 {
@@ -16,8 +19,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('student.index', compact('students'));
+        $students = Student::where('branch', Auth::user()->branch)->orderByDesc('id')->get();
+        $batches = Batch::all();
+        $status = DB::table('status')->where('category', 'student')->get();        
+        return view('student.index', compact('students', 'batches', 'status'));
     }
 
     /**
@@ -27,7 +32,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        $branches = Branch::all();
+        return view('student.create', compact('branches'));
     }
 
     /**
@@ -45,6 +51,7 @@ class StudentController extends Controller
             'admission_date' => 'required',
             'address' => 'required',
             'fee' => 'required',
+            'branch' => 'required',
         ]);
         $input = $request->all();
         if($request->hasFile('photo')):
@@ -79,7 +86,8 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
-        return view('student.edit', compact('student'));
+        $branches = Branch::all();
+        return view('student.edit', compact('student', 'branches'));
     }
 
     /**
@@ -98,6 +106,7 @@ class StudentController extends Controller
             'admission_date' => 'required',
             'address' => 'required',
             'fee' => 'required',
+            'branch' => 'required',
         ]);
         $input = $request->all();
         $student = Student::find($id);

@@ -23,13 +23,14 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" id="datatable-basic">
                         <thead class="thead-light">
-                            <tr><th>SL No</th><th>Batch Name</th><th>Course Name</th><th>Fee</th><th>Edit</th><th>Remove</th></tr>
+                            <tr><th>SL No</th><th>Batch ID</th><th>Batch Name</th><th>Course Name</th><th>Fee</th><th>Edit</th><th>Remove</th></tr>
                         </thead>
                         <tbody>
                             @php $slno = 1 @endphp
                             @forelse($batches as $key => $batch)
                             <tr>
                                 <td>{{ $slno++ }}</td>
+                                <td>{{ $batch->id }}</td>                             
                                 <td>{{ $batch->name }}</td>                             
                                 <td>{{ $batch->course()->find($batch->course)->name }}</td>                             
                                 <td>{{ $batch->fee }}</td>                             

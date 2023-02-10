@@ -22,7 +22,12 @@ class Student extends Model
         'fee',
         'discount_applicable',
         'photo',
+        'branch',
         'created_by',
         'updated_by',
     ];
+
+    public function branch(){
+        return $this->belongsTo(Branch::class, 'branch');
+    }
 }
