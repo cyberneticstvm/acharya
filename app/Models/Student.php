@@ -30,4 +30,8 @@ class Student extends Model
     public function branch(){
         return $this->belongsTo(Branch::class, 'branch');
     }
+
+    public function batches(){
+        return $this->hasMany(StudentBatch::class, 'student');
+    }
 }

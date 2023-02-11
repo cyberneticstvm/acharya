@@ -13,18 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student_batches', function (Blueprint $table) {
+        Schema::create('fees', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student');
             $table->unsignedBigInteger('batch');
-            $table->date('date_joined')->nullable();
-            $table->string('status', 20)->nullable();            
-            $table->boolean('cancelled')->comment('0-no, 1-yes')->default(0);
+            $table->date('paid_date')->nullable();
+            $table->tinyInteger('fee_month')->nullable();
+            $table->integer('fee_year')->nullable();
+            $table->decimal('fee', 7, 2)->default(0);
+            $table->boolean('discount_applicable')->comment('1-yes, 0-no')->default(0);
             $table->unsignedBigInteger('created_by')->references('id')->on('users');
             $table->unsignedBigInteger('updated_by')->references('id')->on('users');
             $table->foreign('student')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('batch')->references('id')->on('batches')->onDelete('cascade');
-            $table->unique(['student','batch']);
+            $table->unique(['student', 'batch', 'fee_month', 'fee_year']);
             $table->timestamps();
         });
     }
@@ -36,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_batches');
+        Schema::dropIfExists('fees');
     }
 };

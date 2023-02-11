@@ -25,13 +25,14 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="datatable-basic">
                             <thead class="thead-light">
-                                <tr><th>SL No</th><th>Student Name</th><th>Email</th><th>Mobile</th><th>Address</th><th>Photo</th><th>Branch</th><th>Receipt</th><th>Email</th><th>Edit</th><th>Assign</th></tr>
+                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Email</th><th>Mobile</th><th>Address</th><th>Photo</th><th>Branch</th><th>Receipt</th><th>Email</th><th>Edit</th><th>Assign</th></tr>
                             </thead>
                             <tbody>
                                 @php $slno = 1 @endphp
                                 @forelse($students as $key => $student)
                                 <tr>
                                     <td>{{ $slno++ }}</td>
+                                    <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->mobile }}</td>
@@ -91,21 +92,6 @@
                                 </div>
                                 @error('batch')
                                     <small class="text-danger">{{ $errors->first('batch') }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label class="req">Discount Applicable</label>
-                                <div class="mb-3">
-                                    <select class="form-control" name="discount_applicable">
-                                        <option value="">Select</option>
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
-                                    </select>
-                                </div>
-                                @error('discount_applicable')
-                                    <small class="text-danger">{{ $errors->first('discount_applicable') }}</small>
                                 @enderror
                             </div>
                         </div>

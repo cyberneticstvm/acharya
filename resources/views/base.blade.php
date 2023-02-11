@@ -128,6 +128,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/fee">
+                  <i class="fa fa-dollar sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Fee</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/attendance">
                   <i class="fa fa-calendar sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Attendance</span>
@@ -165,27 +171,9 @@
           <div class="collapse" id="settings">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
-                <a class="nav-link text-white " href="/"0>
-                  <i class='fa fa-user sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Profile</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/">
-                  <i class="fa fa-flag sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Country/Region</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/">
-                  <i class="fa fa-money sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Tax & Discount</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white " href="/">
-                  <i class="fa fa-file sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Extras</span>
+                <a class="nav-link text-white " href="/settings">
+                  <i class='fa fa-gear sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Settings</span>
                 </a>
               </li>
             </ul>

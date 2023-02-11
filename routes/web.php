@@ -7,6 +7,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\StudentBatchController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,9 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::put('/user/edit/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
 
+    Route::get('/settings', [AdminController::class, 'show'])->name('settings.show');
+    Route::put('/settings/{id}', [AdminController::class, 'update'])->name('settings.update');
+
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
@@ -70,5 +75,18 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 
     Route::get('/student-batch/create', [StudentBatchController::class, 'create'])->name('student.batch.create');
     Route::post('/student-batch/create', [StudentBatchController::class, 'store'])->name('student.batch.save');
+
+    Route::get('/student-batch', [StudentBatchController::class, 'index'])->name('student.batch');
+    Route::get('/student-batch/edit/{id}', [StudentBatchController::class, 'edit'])->name('student.batch.edit');
+    Route::put('/student-batch/edit/{id}', [StudentBatchController::class, 'update'])->name('student.batch.update');
+    Route::delete('/student-batch/delete/{id}', [StudentBatchController::class, 'destroy'])->name('student.batch.delete');
+
+    Route::get('/fee', [FeeController::class, 'index'])->name('fee.show');
+    Route::post('/fee', [FeeController::class, 'show'])->name('fee.fetch');
+    Route::get('/fee/create/{id}', [FeeController::class, 'create'])->name('fee.create');
+    Route::post('/fee/create', [FeeController::class, 'store'])->name('fee.save');
+    Route::get('/fee/edit/{id}', [FeeController::class, 'edit'])->name('fee.edit');
+    Route::put('/fee/edit/{id}', [FeeController::class, 'update'])->name('fee.update');
+    Route::delete('/fee/delete/{id}', [FeeController::class, 'destroy'])->name('fee.delete');
 });
 

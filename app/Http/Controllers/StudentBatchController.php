@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\StudentBatch;
+use App\Models\Student;
+use App\Models\Batch;
 use DB;
+use Exception;
 
 class StudentBatchController extends Controller
 {
@@ -15,7 +19,8 @@ class StudentBatchController extends Controller
      */
     public function index()
     {
-        //
+        $sbs = StudentBatch::all();
+        return view('student-batch.index', compact('sbs'));
     }
 
     /**
@@ -41,7 +46,6 @@ class StudentBatchController extends Controller
             'date_joined' => 'required',
             'batch' => 'required',
             'status' => 'required',
-            'discount_applicable' => 'required',
         ]);
         $students = $request->students;
         $data = [];
@@ -51,14 +55,17 @@ class StudentBatchController extends Controller
                 'batch' => $request->batch,
                 'date_joined' => $request->date_joined,
                 'status' => $request->status,
-                'discount_applicable' => $request->discount_applicable,
                 'created_by' => $request->user()->id,
                 'updated_by' => $request->user()->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
         endforeach;
-        $insert = DB::table('student_batches')->insert($data);
+        try{
+            $insert = DB::table('student_batches')->insert($data);
+        }catch(Exception $e){
+            throw $e;
+        }        
         return redirect()->back()->with('success', 'Student Assigned Successfully!');
     }
 
@@ -81,7 +88,11 @@ class StudentBatchController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sb = StudentBatch::find($id);
+        $students = Student::all();
+        $batches = Batch::all();
+        $status = DB::table('status')->where('category', 'student')->get();
+        return view('student-batch.edit', compact('sb', 'students', 'batches', 'status'));
     }
 
     /**
@@ -93,7 +104,21 @@ class StudentBatchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'student' => 'required',
+            'date_joined' => 'required',
+            'batch' => 'required',
+            'status' => 'required',
+            'cancelled' => 'required',
+        ]);
+        $input = $request->all();
+        $sb = StudentBatch::find($id);
+        try{
+            $sb->update($input);
+        }catch(Exception $e){
+            throw $e;
+        }        
+        return redirect()->route('student.batch')->with('success', 'Student Batch Updated Successfully!');
     }
 
     /**

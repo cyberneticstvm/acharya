@@ -5,16 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StudentBatch extends Model
+class Fee extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'student',
         'batch',
-        'date_joined',
-        'status',
-        'cancelled',
+        'paid_date',
+        'fee_month',
+        'fee_year',
+        'fee', 
+        'discount_applicable',
         'created_by',
         'updated_by',
     ];
