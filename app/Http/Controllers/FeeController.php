@@ -32,7 +32,7 @@ class FeeController extends Controller
     public function create($id)
     {
         $student = Student::findOrFail($id);
-        $batch = Batch::all();
+        $batch = Batch::where('status', 1)->get();
         $months = Month::all();
         $years = Year::all();
         return view('fee.create', compact('student', 'batch', 'months', 'years'));
@@ -93,7 +93,7 @@ class FeeController extends Controller
     {
         $fee = Fee::find($id);
         $student = Student::find($fee->student);
-        $batch = Batch::all();
+        $batch = Batch::where('status', 1)->get();
         $months = Month::all();
         $years = Year::all();
         return view('fee.edit', compact('fee', 'student', 'batch', 'months', 'years'));

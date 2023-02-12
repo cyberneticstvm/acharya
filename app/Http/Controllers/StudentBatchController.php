@@ -90,7 +90,7 @@ class StudentBatchController extends Controller
     {
         $sb = StudentBatch::find($id);
         $students = Student::all();
-        $batches = Batch::all();
+        $batches = Batch::where('status', 1)->get();
         $status = DB::table('status')->where('category', 'student')->get();
         return view('student-batch.edit', compact('sb', 'students', 'batches', 'status'));
     }

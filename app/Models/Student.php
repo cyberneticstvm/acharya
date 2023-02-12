@@ -34,4 +34,8 @@ class Student extends Model
     public function batches(){
         return $this->hasMany(StudentBatch::class, 'student');
     }
+
+    public function attendances(){
+        return $this->hasMany(Attendance::class, 'student');
+    }
 }

@@ -145,6 +145,18 @@
                   <span class="sidenav-normal ms-2 ps-1">I/E Heads</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/income">
+                  <i class="fa fa-money sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Income</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/expense">
+                  <i class="fa fa-shopping-cart sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Expense</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>

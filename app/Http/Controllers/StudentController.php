@@ -20,7 +20,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::where('branch', Auth::user()->branch)->orderByDesc('id')->get();
-        $batches = Batch::all();
+        $batches = Batch::where('status', 1)->get();
         $status = DB::table('status')->where('category', 'student')->get();        
         return view('student.index', compact('students', 'batches', 'status'));
     }

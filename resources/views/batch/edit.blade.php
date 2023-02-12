@@ -57,6 +57,21 @@
                                     <small class="text-danger">{{ $errors->first('fee') }}</small>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Status</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="status">
+                                        <option value="">Select</option>
+                                        <option value="0" {{ ($batch->status == 0) ? 'selected' : '' }}>Expired</option>
+                                        <option value="1" {{ ($batch->status == 1) ? 'selected' : '' }}>Active</option>
+                                    </select>
+                                </div>
+                                @error('status')
+                                    <small class="text-danger">{{ $errors->first('status') }}</small>
+                                @enderror
+                            </div>
                         </div>                        
                     </div>
                     <div class="text-center">

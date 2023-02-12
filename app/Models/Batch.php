@@ -14,6 +14,7 @@ class Batch extends Model
         'course',
         'start_date',
         'fee',
+        'status',
         'created_by',
         'updated_by',
     ];

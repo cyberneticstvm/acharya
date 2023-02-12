@@ -9,6 +9,10 @@ use App\Http\Controllers\BatchController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FeeController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\HeadController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\ExpenseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,5 +92,30 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/fee/edit/{id}', [FeeController::class, 'edit'])->name('fee.edit');
     Route::put('/fee/edit/{id}', [FeeController::class, 'update'])->name('fee.update');
     Route::delete('/fee/delete/{id}', [FeeController::class, 'destroy'])->name('fee.delete');
+
+    Route::get('/attendance', [AttendanceController::class, 'attendance'])->name('attendance');
+    Route::post('/attendance', [AttendanceController::class, 'createemptyattendance'])->name('attendance.sheet.create');
+    Route::get('/updateAttendance', [AttendanceController::class, 'updateAttendance'])->name('updateAttendance');
+
+    Route::get('/head', [HeadController::class, 'index'])->name('head');
+    Route::get('/head/create', [HeadController::class, 'create'])->name('head.create');
+    Route::post('/head/create', [HeadController::class, 'store'])->name('head.save');
+    Route::get('/head/edit/{id}', [HeadController::class, 'edit'])->name('head.edit');
+    Route::put('/head/edit/{id}', [HeadController::class, 'update'])->name('head.update');
+    Route::delete('/head/delete/{id}', [HeadController::class, 'destroy'])->name('head.delete');
+
+    Route::get('/income', [IncomeController::class, 'index'])->name('income');
+    Route::get('/income/create', [IncomeController::class, 'create'])->name('income.create');
+    Route::post('/income/create', [IncomeController::class, 'store'])->name('income.save');
+    Route::get('/income/edit/{id}', [IncomeController::class, 'edit'])->name('income.edit');
+    Route::put('/income/edit/{id}', [IncomeController::class, 'update'])->name('income.update');
+    Route::delete('/income/delete/{id}', [IncomeController::class, 'destroy'])->name('income.delete');
+
+    Route::get('/expense', [ExpenseController::class, 'index'])->name('expense');
+    Route::get('/expense/create', [ExpenseController::class, 'create'])->name('expense.create');
+    Route::post('/expense/create', [ExpenseController::class, 'store'])->name('expense.save');
+    Route::get('/expense/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit');
+    Route::put('/expense/edit/{id}', [ExpenseController::class, 'update'])->name('expense.update');
+    Route::delete('/expense/delete/{id}', [ExpenseController::class, 'destroy'])->name('expense.delete');
 });
 

@@ -23,7 +23,6 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="req">Student ID</label>
                                 <div class="mb-3">
                                     <input type="number" class="form-control" placeholder="Student ID" name="student" value="{{ old('student') }}" aria-label="Text" aria-describedby="text-addon">
                                 </div>
@@ -31,11 +30,10 @@
                                     <small class="text-danger">{{ $errors->first('student') }}</small>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-submit bg-gradient-primary">FETCH</button>
                         </div>                        
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">FETCH</button>
-                        <button type="button" onclick="history.back()" class="btn bg-gradient-warning mt-4 mb-0">CANCEL</button>
                     </div>
                 </form>
                 @if($student)

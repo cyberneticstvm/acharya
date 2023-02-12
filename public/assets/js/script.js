@@ -15,6 +15,23 @@ $(function(){
     $('#datatable-basic').DataTable({
         pagingType: "numbers"
     });
+
+    $(".rad_at").click(function(){
+        var col = $(this).data('col');
+        var aid = $(this).data('aid');
+        var val = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: '/updateAttendance',
+            data: {'col': col, 'aid': aid, 'val': val},
+            success: function(response){
+                alert(response);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
+    })
 });
 
 setTimeout(function () {
