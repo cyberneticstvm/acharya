@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Batch;
+use App\Models\Syllabus;
 
 class BatchController extends Controller
 {
@@ -28,7 +29,8 @@ class BatchController extends Controller
     public function create()
     {
         $courses = Course::all();
-        return view('batch.create', compact('courses'));
+        $syllabi = Syllabus::all();
+        return view('batch.create', compact('courses', 'syllabi'));
     }
 
     /**
@@ -42,6 +44,7 @@ class BatchController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:batches,name',
             'course' => 'required',
+            'syllabus' => 'required',
             'fee' => 'required',
         ]);
         $input = $request->all();
@@ -72,7 +75,8 @@ class BatchController extends Controller
     {
         $courses = Course::all();
         $batch = Batch::find($id);
-        return view('batch.edit', compact('courses', 'batch'));
+        $syllabi = Syllabus::all();
+        return view('batch.edit', compact('courses', 'batch', 'syllabi'));
     }
 
     /**
@@ -87,6 +91,7 @@ class BatchController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:batches,name,'.$id,
             'course' => 'required',
+            'syllabus' => 'required',
             'fee' => 'required',
         ]);
         $input = $request->all();       

@@ -116,6 +116,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/syllabus">
+                  <i class="fa fa-file sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Syllabus</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/batch">
                   <i class="fa fa-bars sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Batch</span>

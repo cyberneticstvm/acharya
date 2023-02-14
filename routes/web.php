@@ -13,6 +13,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\SyllabusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,13 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/batch/edit/{id}', [BatchController::class, 'edit'])->name('batch.edit');
     Route::put('/batch/edit/{id}', [BatchController::class, 'update'])->name('batch.update');
     Route::delete('/batch/delete/{id}', [BatchController::class, 'destroy'])->name('batch.delete');
+
+    Route::get('/syllabus', [SyllabusController::class, 'index'])->name('syllabus');
+    Route::get('/syllabus/create', [SyllabusController::class, 'create'])->name('syllabus.create');
+    Route::post('/syllabus/create', [SyllabusController::class, 'store'])->name('syllabus.save');
+    Route::get('/syllabus/edit/{id}', [SyllabusController::class, 'edit'])->name('syllabus.edit');
+    Route::put('/syllabus/edit/{id}', [SyllabusController::class, 'update'])->name('syllabus.update');
+    Route::delete('/syllabus/delete/{id}', [SyllabusController::class, 'destroy'])->name('syllabus.delete');
 
     Route::get('/student-batch/create', [StudentBatchController::class, 'create'])->name('student.batch.create');
     Route::post('/student-batch/create', [StudentBatchController::class, 'store'])->name('student.batch.save');
