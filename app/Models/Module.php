@@ -19,4 +19,8 @@ class Module extends Model
     public function syllabus(){
         return $this->belongsTo(Syllabus::class, 'syllabus');
     }
+
+    public function batchModules(){
+        return $this->hasMany(BatchSyllabus::class, 'module');
+    }
 }

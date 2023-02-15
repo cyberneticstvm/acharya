@@ -134,6 +134,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/syllabus-status">
+                  <i class="fa fa-check sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Syllabus Status</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/fee">
                   <i class="fa fa-dollar sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Fee</span>

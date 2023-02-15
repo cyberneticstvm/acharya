@@ -31,7 +31,26 @@ $(function(){
                 console.log(XMLHttpRequest);
             }
         });
-    })
+    });
+
+    $(".chkModule").change(function(){
+        var mid = $(this).data('mid');
+        var val = 0;
+        if($(this).is(":checked")){
+            val = 1;
+        };
+        $.ajax({
+            type: 'GET',
+            url: '/syllabus-status/update',
+            data: {'mid': mid, 'val': val},
+            success: function(response){
+                alert(response);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
+    });
 });
 
 setTimeout(function () {

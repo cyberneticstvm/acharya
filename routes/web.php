@@ -14,6 +14,7 @@ use App\Http\Controllers\HeadController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\SyllabusController;
+use App\Http\Controllers\BatchSyllabusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,10 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/syllabus/edit/{id}', [SyllabusController::class, 'edit'])->name('syllabus.edit');
     Route::put('/syllabus/edit/{id}', [SyllabusController::class, 'update'])->name('syllabus.update');
     Route::delete('/syllabus/delete/{id}', [SyllabusController::class, 'destroy'])->name('syllabus.delete');
+
+    Route::get('/syllabus-status', [BatchSyllabusController::class, 'show'])->name('syllabus.show');
+    Route::post('/syllabus-status', [BatchSyllabusController::class, 'fetch'])->name('syllabus.fetch');
+    Route::get('/syllabus-status/update', [BatchSyllabusController::class, 'update'])->name('syllabus.update');
 
     Route::get('/student-batch/create', [StudentBatchController::class, 'create'])->name('student.batch.create');
     Route::post('/student-batch/create', [StudentBatchController::class, 'store'])->name('student.batch.save');
