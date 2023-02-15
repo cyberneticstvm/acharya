@@ -51,6 +51,18 @@ $(function(){
             }
         });
     });
+
+    $(".attTD").each(function(){
+        if($(this).text() == 'L'){
+            $(this).addClass('text-warning');
+        }
+        if($(this).text() == 'P'){
+            $(this).addClass('text-success');
+        }
+        if($(this).text() == 'A'){
+            $(this).addClass('text-danger');
+        }
+    });
 });
 
 setTimeout(function () {

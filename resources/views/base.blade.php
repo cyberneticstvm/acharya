@@ -225,27 +225,33 @@
           <div class="collapse" id="opt">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
-                <a class="nav-link text-white " href="/"0>
-                  <i class='fa fa-gift sidenav-mini-icon'></i>
-                  <span class="sidenav-normal ms-2 ps-1">Product</span>
+                <a class="nav-link text-white " href="/report/daybook">
+                  <i class='fa fa-file sidenav-mini-icon'></i>
+                  <span class="sidenav-normal ms-2 ps-1">Daybook</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white " href="/">
-                  <i class="fa fa-shopping-cart sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Purchase</span>
+                <a class="nav-link text-white " href="/report/attendance">
+                  <i class="fa fa-calendar sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Attendance</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white " href="/">
+                <a class="nav-link text-white " href="/report/fee">
                   <i class="fa fa-money sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Sales</span>
+                  <span class="sidenav-normal ms-2 ps-1">Fee</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white " href="/">
-                  <i class="fa fa-usd sidenav-mini-icon"></i>
-                  <span class="sidenav-normal ms-2 ps-1">Sales Return</span>
+                <a class="nav-link text-white " href="/report/fee-pending">
+                  <i class="fa fa-money sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Fee Pending</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/report/student">
+                  <i class="fa fa-user sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Student</span>
                 </a>
               </li>
             </ul>

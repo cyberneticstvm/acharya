@@ -27,5 +27,4 @@ class Batch extends Model
     public function syllabus(){
         return $this->belongsTo(Syllabus::class, 'syllabus');
     }
-
 }

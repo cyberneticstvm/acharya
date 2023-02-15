@@ -28,4 +28,8 @@ class Fee extends Model
     public function batch(){
         return $this->belongsTo(Batch::class, 'batch');
     }
+
+    public function mname(){
+        return $this->belongsTo(Month::class, 'fee_month');
+    }
 }

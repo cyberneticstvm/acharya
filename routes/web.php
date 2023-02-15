@@ -15,6 +15,7 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\BatchSyllabusController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -130,5 +131,16 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/expense/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit');
     Route::put('/expense/edit/{id}', [ExpenseController::class, 'update'])->name('expense.update');
     Route::delete('/expense/delete/{id}', [ExpenseController::class, 'destroy'])->name('expense.delete');
+
+    Route::get('/report/daybook', [ReportController::class, 'daybook'])->name('report.daybook');
+    Route::post('/report/daybook', [ReportController::class, 'fetchdaybook'])->name('report.daybook.fetch');
+    Route::get('/report/fee', [ReportController::class, 'fee'])->name('report.fee');
+    Route::post('/report/fee', [ReportController::class, 'fetchfee'])->name('report.fee.fetch');
+    Route::get('/report/fee-pending', [ReportController::class, 'feepending'])->name('report.feepending');
+    Route::post('/report/fee-pending', [ReportController::class, 'fetchfeepending'])->name('report.feepending.fetch');
+    Route::get('/report/attendance', [ReportController::class, 'attendance'])->name('report.attendance');
+    Route::post('/report/attendance', [ReportController::class, 'fetchattendance'])->name('report.attendance.fetch');
+    Route::get('/report/student', [ReportController::class, 'student'])->name('report.student');
+    Route::post('/report/student', [ReportController::class, 'fetchstudent'])->name('report.student.fetch');
 });
 
