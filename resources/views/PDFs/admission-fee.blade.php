@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Devi Eye Clinic & Opticians</title>
+    <title>Acharya Educations</title>
     <style>
         table{
             border: 1px solid #e6e6e6;
