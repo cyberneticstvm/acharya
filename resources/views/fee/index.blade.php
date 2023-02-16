@@ -91,8 +91,8 @@
                                 <td class="text-end">{{ $fee->fee_year }}</td>
                                 <td>{{ date('d/M/Y', strtotime($fee->paid_date)) }}</td>                                
                                 <td class="text-end">{{ $fee->fee }}</td>
-                                <td></td>
-                                <td></td>
+                                <td class="text-center"><a href="/pdf/batch-fee/{{ $fee->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
+                                <td class="text-center"><a href="/email/batch-fee/{{ $fee->id }}"><i class="fa fa-envelope text-success"></i></a></td>
                                 <td class="text-center"><a href="/fee/edit/{{ $fee->id }}"><i class="fa fa-edit text-warning"></i></a></td>
                                 <td class="text-center">
                                     <form method="post" action="{{ route('fee.delete', $fee->id) }}">
