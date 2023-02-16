@@ -39,8 +39,8 @@
                                     <td>{{ $student->address }}</td>
                                     <td class="text-center"><a href="/storage/photos/{{ $student->photo }}" target="_blank"><i class="fa fa-image text-info"></i></a></td>
                                     <td>{{ $student->branch()->find($student->branch)->name }}</td>
-                                    <td class="text-center"><i class="fa fa-file-pdf-o text-danger"></i></td>
-                                    <td class="text-center"><i class="fa fa-envelope text-success"></i></td>                                
+                                    <td class="text-center"><a href="/pdf/admission-fee/{{ $student->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
+                                    <td class="text-center"><a href="/email/admission-fee/{{ $student->id }}"><i class="fa fa-envelope text-success"></i></a></td>                                
                                     <td class="text-center"><a href="/student/edit/{{ $student->id }}"><i class="fa fa-edit text-warning"></i></a></td>
                                     <td class="text-center"><input type="checkbox" name="students[]" value="{{ $student->id }}" /></td>
                                 </tr>

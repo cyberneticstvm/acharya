@@ -16,6 +16,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\BatchSyllabusController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,5 +143,8 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::post('/report/attendance', [ReportController::class, 'fetchattendance'])->name('report.attendance.fetch');
     Route::get('/report/student', [ReportController::class, 'student'])->name('report.student');
     Route::post('/report/student', [ReportController::class, 'fetchstudent'])->name('report.student.fetch');
+
+    Route::get('/pdf/admission-fee/{id}', [PDFController::class, 'admissionfee'])->name('admissionfee');
+    Route::get('/email/admission-fee/{id}', [PDFController::class, 'emailadmissionfee'])->name('emailadmissionfee');
 });
 
