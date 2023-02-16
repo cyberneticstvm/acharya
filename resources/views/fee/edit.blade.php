@@ -91,7 +91,7 @@
                                 <div class="mb-3">
                                     <select class="form-control" name="discount_applicable">
                                         <option value="">Select</option>
-                                        <option value="0" {{ ($fee->discount_applicable == 0) ? 'selected' : '' }}>{{ $month->name }}>No</option>
+                                        <option value="0" {{ ($fee->discount_applicable == 0) ? 'selected' : '' }}>No</option>
                                         <option value="1" {{ ($fee->discount_applicable == 1) ? 'selected' : '' }}>Yes</option>
                                     </select>
                                 </div>
