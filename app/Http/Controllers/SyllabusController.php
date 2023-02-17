@@ -98,6 +98,7 @@ class SyllabusController extends Controller
             'name' => 'required|unique:syllabi,name,'.$id,
             'module_name' => 'required',
         ]);
+        
         $input = $request->all();        
         $input['updated_by'] = $request->user()->id;
         $syl = Syllabus::find($id);
@@ -115,7 +116,7 @@ class SyllabusController extends Controller
             ];
         endforeach;        
         DB::table('modules')->insert($data);
-        return redirect()->route('syllabus')->with('success', 'Syllabus Created Successfully!');
+        return redirect()->route('syllabus')->with('success', 'Syllabus Updated Successfully!');
     }
 
     /**

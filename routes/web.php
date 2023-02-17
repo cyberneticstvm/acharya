@@ -81,16 +81,16 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::put('/batch/edit/{id}', [BatchController::class, 'update'])->name('batch.update');
     Route::delete('/batch/delete/{id}', [BatchController::class, 'destroy'])->name('batch.delete');
 
+    Route::get('/syllabus-status', [BatchSyllabusController::class, 'show'])->name('syllabus.show');
+    Route::post('/syllabus-status', [BatchSyllabusController::class, 'fetch'])->name('syllabus.fetch');
+    Route::get('/syllabus-status/update', [BatchSyllabusController::class, 'update'])->name('syllabus.update');
+
     Route::get('/syllabus', [SyllabusController::class, 'index'])->name('syllabus');
     Route::get('/syllabus/create', [SyllabusController::class, 'create'])->name('syllabus.create');
     Route::post('/syllabus/create', [SyllabusController::class, 'store'])->name('syllabus.save');
     Route::get('/syllabus/edit/{id}', [SyllabusController::class, 'edit'])->name('syllabus.edit');
     Route::put('/syllabus/edit/{id}', [SyllabusController::class, 'update'])->name('syllabus.update');
     Route::delete('/syllabus/delete/{id}', [SyllabusController::class, 'destroy'])->name('syllabus.delete');
-
-    Route::get('/syllabus-status', [BatchSyllabusController::class, 'show'])->name('syllabus.show');
-    Route::post('/syllabus-status', [BatchSyllabusController::class, 'fetch'])->name('syllabus.fetch');
-    Route::get('/syllabus-status/update', [BatchSyllabusController::class, 'update'])->name('syllabus.update');
 
     Route::get('/student-batch/create', [StudentBatchController::class, 'create'])->name('student.batch.create');
     Route::post('/student-batch/create', [StudentBatchController::class, 'store'])->name('student.batch.save');
