@@ -5,7 +5,7 @@
     font-size: medium;
 }
 .page-item .page-link, .page-item span{
-    color: #fff;
+    color: #000;
 }
 .navbar-vertical .navbar-nav .nav-item .collapse .nav .nav-item .nav-link, .navbar-vertical .navbar-nav .nav-item .collapsing .nav .nav-item .nav-link{
     font-size: .9rem;
