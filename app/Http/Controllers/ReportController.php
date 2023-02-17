@@ -100,9 +100,13 @@ class ReportController extends Controller
             'student' => 'required',
         ]);
         $student = Student::find($request->student);
-        $batches = Batch::whereIn('id', $student->batches()->pluck('batch'))->pluck('name')->implode(', ');
-        $records = StudentBatch::whereIn('batch', $student->batches()->pluck('batch'))->where('student', $request->student)->get();
-        $inputs = array($request->student);
-        return view('reports.student', compact('student', 'inputs', 'batches', 'records'));
+        if($student):
+            $batches = Batch::whereIn('id', $student->batches()->pluck('batch'))->pluck('name')->implode(', ');
+            $records = StudentBatch::whereIn('batch', $student->batches()->pluck('batch'))->where('student', $request->student)->get();
+            $inputs = array($request->student);
+            return view('reports.student', compact('student', 'inputs', 'batches', 'records'));
+        else:
+            return redirect()->back()->with("error", "Student details not found")->withInput($request->all);
+        endif;
     }
 }
