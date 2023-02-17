@@ -37,7 +37,7 @@
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->mobile }}</td>
                                     <td>{{ $student->address }}</td>
-                                    <td class="text-center"><a href="/storage/photos/{{ $student->photo }}" target="_blank"><i class="fa fa-image text-info"></i></a></td>
+                                    <td class="text-center"><a href="/public/storage/photos/{{ $student->photo }}" target="_blank"><i class="fa fa-image text-info"></i></a></td>
                                     <td>{{ $student->branch()->find($student->branch)->name }}</td>
                                     <td class="text-center"><a href="/pdf/admission-fee/{{ $student->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
                                     <td class="text-center"><a href="/email/admission-fee/{{ $student->id }}"><i class="fa fa-envelope text-success"></i></a></td>                                
