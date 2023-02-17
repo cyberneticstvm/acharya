@@ -22,13 +22,30 @@
                 <form role="form" method="post" action="{{ route('syllabus.fetch') }}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <div class="mb-3">
-                                    <input type="number" class="form-control" placeholder="Batch ID" name="batch" value="{{ old('batch') }}" aria-label="Text" aria-describedby="text-addon">
+                                    <select class="form-control bforSyl" name="batch">
+                                        <option value="">Select Batch</option>
+                                        @forelse($batches as $key => $batch)
+                                            <option value="{{ $batch->id }}" {{ ($batch->id == old('batch')) ? '' : '' }}>{{ $batch->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
                                 </div>
                                 @error('batch')
                                     <small class="text-danger">{{ $errors->first('batch') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="mb-3">
+                                    <select class="form-control bSyl" name="syllabus">                                    
+                                    </select>
+                                </div>
+                                @error('syllabus')
+                                    <small class="text-danger">{{ $errors->first('syllabus') }}</small>
                                 @enderror
                             </div>
                         </div>

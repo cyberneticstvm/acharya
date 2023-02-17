@@ -7,6 +7,16 @@
                 <h3 class="font-weight-bolder text-primary text-gradient">Fee</h3>
             </div>
             <div class="card-body">
+                @if(session()->has('success'))
+                    <div class="alert alert-success text-white">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+                @if(session()->has('error'))
+                    <div class="alert alert-danger text-white">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
                 <form role="form" method="post" action="{{ route('fee.save') }}">
                     @csrf
                     <div class="row">

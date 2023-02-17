@@ -90,8 +90,8 @@
                                         @endforelse
                                     </select>
                                 </div>
-                                @error('batch')
-                                    <small class="text-danger">{{ $errors->first('batch') }}</small>
+                                @error('status')
+                                    <small class="text-danger">{{ $errors->first('status') }}</small>
                                 @enderror
                             </div>
                         </div>

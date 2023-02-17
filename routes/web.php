@@ -84,6 +84,7 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/syllabus-status', [BatchSyllabusController::class, 'show'])->name('syllabus.show');
     Route::post('/syllabus-status', [BatchSyllabusController::class, 'fetch'])->name('syllabus.fetch');
     Route::get('/syllabus-status/update', [BatchSyllabusController::class, 'update'])->name('syllabus.update');
+    Route::get('/getDropDown', [AdminController::class, 'getDropDown'])->name('getDropDown');
 
     Route::get('/syllabus', [SyllabusController::class, 'index'])->name('syllabus');
     Route::get('/syllabus/create', [SyllabusController::class, 'create'])->name('syllabus.create');

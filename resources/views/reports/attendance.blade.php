@@ -78,8 +78,11 @@
                                     @for($i=1; $i<=$days; $i++)
                                     <th>{{ $i }}</th>
                                     @endfor
+                                    <th class="text-success">P</th>
+                                    <th class="text-danger">A</th>
+                                    <th class="text-warning">L</th>
                                 </thead>
-                                <tbody>
+                                <tbody class="att">
                                     @forelse($records as $key => $record)
                                     <tr>
                                         <td>{{ $record->student()->find($record->student)->name }}</td>
@@ -87,6 +90,9 @@
                                         @php $attendance = $record->student()->find($record->student)->attendances()->whereDay('date', $i)->whereMonth('date', $inputs[1])->whereYear('date', $inputs[2])->selectRaw("CASE WHEN present = 1 THEN 'P' WHEN `leave` = 1 THEN 'L' ELSE 'A' END AS atype") @endphp
                                         <td class="text-center attTD fw-bold">{!! $attendance->value('atype') !!}</td>
                                         @endfor
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     @empty
                                     @endforelse

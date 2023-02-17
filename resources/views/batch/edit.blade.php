@@ -19,7 +19,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req">Batch Name</label>
                                 <div class="mb-3">
@@ -30,7 +30,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req">Course Name</label>
                                 <div class="mb-3">
@@ -46,24 +46,7 @@
                                     <small class="text-danger">{{ $errors->first('course') }}</small>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label class="req">Syllabus</label>
-                                <div class="mb-3">
-                                    <select class="form-control" name="syllabus">
-                                        <option value="">Select</option>
-                                        @forelse($syllabi as $key => $syl)
-                                            <option value="{{ $syl->id }}" {{ ($syl->id == $batch->syllabus) ? 'selected' : '' }}>{{ $syl->name }}</option>
-                                        @empty
-                                        @endforelse
-                                    </select>
-                                </div>
-                                @error('syllabus')
-                                    <small class="text-danger">{{ $errors->first('syllabus') }}</small>
-                                @enderror
-                            </div>
-                        </div>
+                        </div>                        
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label class="req">Fee / Student</label>
@@ -89,7 +72,29 @@
                                     <small class="text-danger">{{ $errors->first('status') }}</small>
                                 @enderror
                             </div>
-                        </div>                        
+                        </div> 
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="req">Syllabus</label>
+                                <div class="mb-3">
+                                    <select class="form-control select2" name="syllabi[]" data-placeholder="Select" multiple>
+                                        @forelse($syllabi as $key => $syl)
+                                            @php $selected = '' @endphp
+                                            @foreach($syls as $key1 => $sy)
+                                                @if($syl->id == $sy->syllabus)
+                                                    {{ $selected = 'selected' }}                                                    
+                                                @endif
+                                            @endforeach
+                                            <option value="{{ $syl->id }}" {{ $selected }}>{{ $syl->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('syllabi')
+                                    <small class="text-danger">{{ $errors->first('syllabi') }}</small>
+                                @enderror
+                            </div>
+                        </div>                       
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">UPDATE</button>

@@ -33,7 +33,7 @@
                                 <td>{{ $batch->id }}</td>                             
                                 <td>{{ $batch->name }}</td>                             
                                 <td>{{ $batch->course()->find($batch->course)->name }}</td>                             
-                                <td>{{ $batch->syllabus()->find($batch->syllabus)->name }}</td>                             
+                                <td>{{ $syllabus->whereIn('id', $batch->batchsyllabi()->pluck('syllabus'))->pluck('name')->implode(',') }}</td>                             
                                 <td>{{ $batch->fee }}</td>
                                 <td>{{ ($batch->status == 1) ? 'Active' : 'Expired' }}</td>                             
                                 <td class="text-center"><a href="/batch/edit/{{ $batch->id }}"><i class="fa fa-edit text-warning"></i></a></td>

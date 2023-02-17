@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Batch;
 use App\Models\Syllabus;
+use DB;
 
 class BatchController extends Controller
 {
@@ -18,7 +19,8 @@ class BatchController extends Controller
     public function index()
     {
         $batches = Batch::all();
-        return view('batch.index', compact('batches'));
+        $syllabus = Syllabus::all();
+        return view('batch.index', compact('batches', 'syllabus'));
     }
 
     /**
@@ -44,13 +46,22 @@ class BatchController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:batches,name',
             'course' => 'required',
-            'syllabus' => 'required',
             'fee' => 'required',
+            'syllabi' => 'present|array',
         ]);
         $input = $request->all();
         $input['created_by'] = Auth::user()->id;        
-        $input['updated_by'] = Auth::user()->id;        
-        Batch::create($input);
+        $input['updated_by'] = Auth::user()->id;
+        DB::transaction(function() use ($input, $request) {
+            $batch = Batch::create($input);
+            foreach($request->syllabi as $key => $syl):
+                $data [] = [
+                    'syllabus' => $syl,
+                    'batch' => $batch->id,
+                ];
+            endforeach;
+            DB::table('batch_syllabs')->insert($data);
+        });       
         return redirect()->route('batch')->with('success', 'Batch Created Successfully!');
     }
 
@@ -76,7 +87,8 @@ class BatchController extends Controller
         $courses = Course::all();
         $batch = Batch::find($id);
         $syllabi = Syllabus::all();
-        return view('batch.edit', compact('courses', 'batch', 'syllabi'));
+        $syls = DB::table('batch_syllabs')->where('batch', $id)->get();
+        return view('batch.edit', compact('courses', 'batch', 'syllabi', 'syls'));
     }
 
     /**
@@ -91,13 +103,23 @@ class BatchController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:batches,name,'.$id,
             'course' => 'required',
-            'syllabus' => 'required',
             'fee' => 'required',
+            'syllabi' => 'present|array',
         ]);
         $input = $request->all();       
         $input['updated_by'] = Auth::user()->id;
-        $batch = Batch::find($id);        
-        $batch->update($input);
+        DB::transaction(function() use ($input, $request, $id) {
+            $batch = Batch::find($id);        
+            $batch->update($input);
+            DB::table('batch_syllabs')->where('batch', $id)->delete();
+            foreach($request->syllabi as $key => $syl):
+                $data [] = [
+                    'syllabus' => $syl,
+                    'batch' => $batch->id,
+                ];
+            endforeach;
+            DB::table('batch_syllabs')->insert($data);
+        });        
         return redirect()->route('batch')->with('success', 'Batch Updated Successfully!');
     }
 

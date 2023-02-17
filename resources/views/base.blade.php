@@ -34,6 +34,7 @@
   <link href="{{ public_path().'/assets/css/nucleo-svg.css' }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ public_path().'/assets/css/soft-ui-dashboard.css?v=1.0.7' }}" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <link id="pagestyle" href="{{ public_path().'/assets/css/style.css' }}" rel="stylesheet" />
   <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 </head>
@@ -390,6 +391,7 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ public_path().'/assets/js/soft-ui-dashboard.min.js?v=1.0.7' }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
   <script src="{{ public_path().'/assets/js/script.js' }}"></script>

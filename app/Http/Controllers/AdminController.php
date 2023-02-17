@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Settings;
+use App\Models\BatchSyllabs;
+use App\Models\Syllabus;
+use DB;
 
 class AdminController extends Controller
 {
@@ -25,5 +28,16 @@ class AdminController extends Controller
         $input['branch'] = $branch;
         Settings::upsert($input, ['branch']);
         return redirect()->route('settings.show')->with('success', 'Settings Updated Successfully!');
+    }
+
+    public function getDropDown(Request $request){
+        $id = $request->bid;
+        $syls = DB::table('batch_syllabs')->select('syllabus')->where('batch', $id)->pluck('syllabus');
+        $data = Syllabus::whereIn('id', $syls)->select('id', 'name')->get();
+        $op = "<option value=''>Select</option>";
+        foreach($data as $key => $val):
+            $op .= "<option value='".$val->id."'>".$val->name."</option>";
+        endforeach;
+        echo $op;
     }
 }

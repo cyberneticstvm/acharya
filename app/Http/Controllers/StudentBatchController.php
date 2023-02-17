@@ -64,7 +64,8 @@ class StudentBatchController extends Controller
         try{
             $insert = DB::table('student_batches')->insert($data);
         }catch(Exception $e){
-            throw $e;
+            //throw $e;
+            return redirect()->back()->with('error', "Selected student already been assigned to the Batch")->withInput($request->all());
         }        
         return redirect()->back()->with('success', 'Student Assigned Successfully!');
     }

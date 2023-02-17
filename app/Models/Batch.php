@@ -12,7 +12,6 @@ class Batch extends Model
     protected $fillable = [
         'name',
         'course',
-        'syllabus',
         'start_date',
         'fee',
         'status',
@@ -24,7 +23,7 @@ class Batch extends Model
         return $this->belongsTo(Course::class, 'course');
     }
 
-    public function syllabus(){
-        return $this->belongsTo(Syllabus::class, 'syllabus');
+    public function batchsyllabi(){
+        return $this->hasMany(BatchSyllabs::class, 'batch');
     }
 }

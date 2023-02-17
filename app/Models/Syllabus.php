@@ -18,4 +18,8 @@ class Syllabus extends Model
     public function modules(){
         return $this->hasMany(Module::class, 'syllabus');
     }
+
+    public function batches(){
+        return $this->hasMany(Batch::class, 'syllabus');
+    }
 }

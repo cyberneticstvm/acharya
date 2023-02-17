@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req">Batch Name</label>
                                 <div class="mb-3">
@@ -29,7 +29,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="req">Course Name</label>
                                 <div class="mb-3">
@@ -45,24 +45,7 @@
                                     <small class="text-danger">{{ $errors->first('course') }}</small>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label class="req">Syllabus</label>
-                                <div class="mb-3">
-                                    <select class="form-control" name="syllabus">
-                                        <option value="">Select</option>
-                                        @forelse($syllabi as $key => $syl)
-                                            <option value="{{ $syl->id }}" {{ ($syl->id == old('syllabus')) ? 'selected' : '' }}>{{ $syl->name }}</option>
-                                        @empty
-                                        @endforelse
-                                    </select>
-                                </div>
-                                @error('syllabus')
-                                    <small class="text-danger">{{ $errors->first('syllabus') }}</small>
-                                @enderror
-                            </div>
-                        </div>
+                        </div>                        
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label class="req">Fee / Student</label>
@@ -71,6 +54,22 @@
                                 </div>
                                 @error('fee')
                                     <small class="text-danger">{{ $errors->first('fee') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="req">Syllabus</label>
+                                <div class="mb-3">
+                                    <select class="form-control select2" name="syllabi[]" data-placeholder="Select" multiple>
+                                        @forelse($syllabi as $key => $syl)
+                                            <option value="{{ $syl->id }}" {{ ($syl->id == old('syllabus')) ? 'selected' : '' }}>{{ $syl->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('syllabi')
+                                    <small class="text-danger">{{ $errors->first('syllabi') }}</small>
                                 @enderror
                             </div>
                         </div>                        

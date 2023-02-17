@@ -10,6 +10,7 @@ use App\Models\Month;
 use App\Models\Year;
 use App\Models\Fee;
 use App\Models\Settings;
+use Exception;
 
 class FeeController extends Controller
 {
@@ -64,7 +65,11 @@ class FeeController extends Controller
         else:
             $input['fee'] = $fee;
         endif;
-        Fee::create($input);
+        try{
+            Fee::create($input);
+        }catch(Exception $e){
+            return redirect()->back()->with('error', "Selected month fee already been paid")->withInput($request->all());
+        }        
         return redirect()->route('fee.show')->with('success', 'Fee Saved Successfully!');
     }
 
