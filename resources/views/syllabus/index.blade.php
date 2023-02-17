@@ -31,7 +31,7 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>                            
                                 <td>{{ $syl->name }}</td>                            
-                                <td>{{ $syl->modules()->pluck('name')->implode(', ') }}</td>                            
+                                <td>{{ $syl->modules()->pluck('name')->first().'...' }}</td>                            
                                 <td class="text-center"><a href="/syllabus/edit/{{ $syl->id }}"><i class="fa fa-edit text-warning"></i></a></td>
                                 <td class="text-center">
                                     <form method="post" action="{{ route('syllabus.delete', $syl->id) }}">
