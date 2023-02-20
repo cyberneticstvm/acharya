@@ -55,6 +55,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::put('/settings/{id}', [AdminController::class, 'update'])->name('settings.update');
 
     Route::get('/studentregchart', [AdminController::class, 'studentregchart'])->name('dash.studentregchart');
+    Route::get('/studentfeechart', [AdminController::class, 'studentfeechart'])->name('dash.studentfeechart');
+    Route::get('/studentcancelledchart', [AdminController::class, 'studentcancelledchart'])->name('dash.studentcancelledchart');
 
 });
 
