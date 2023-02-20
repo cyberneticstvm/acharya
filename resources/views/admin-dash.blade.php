@@ -50,7 +50,7 @@
                 <div class="col-md-6">
                     <div class="card overflow-hidden">
                         <div class="card-header p-3 pb-0">
-                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Cancelled Students</p>
+                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Students Cancelled</p>
                         </div>
                         <div class="card-body p-0">
                             <div class="chart">
