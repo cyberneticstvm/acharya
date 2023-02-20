@@ -107,7 +107,7 @@ $(function(){
             data: {
               labels: [response[11].mname, response[10].mname, response[9].mname, response[8].mname, response[7].mname, response[6].mname, response[5].mname, response[4].mname, response[3].mname, response[2].mname, response[1].mname, response[0].mname],
               datasets: [{
-                label: "Sales by age",
+                label: "Student Registration",
                 weight: 5,
                 borderWidth: 0,
                 borderRadius: 4,
@@ -165,7 +165,7 @@ $(function(){
         data: {
             labels: ['Admission Fee', 'Batch Fee', 'Other Income', 'Expenses'],
             datasets: [{
-            label: "Projects",
+            label: "Income & Expense",
             weight: 9,
             cutout: 0,
             tension: 0.9,
@@ -229,7 +229,7 @@ $(function(){
             data: {
               labels: [response[11].mname, response[10].mname, response[9].mname, response[8].mname, response[7].mname, response[6].mname, response[5].mname, response[4].mname, response[3].mname, response[2].mname, response[1].mname, response[0].mname],
               datasets: [{
-                label: "Visitors",
+                label: "Students Cancelled",
                 tension: 0.5,
                 borderWidth: 0,
                 pointRadius: 0,
