@@ -19,7 +19,18 @@
                 @endif
             </div>
             <div class="card-body">
-                
+                <div class="col-md-6">
+                    <div class="card z-index-2">
+                        <div class="card-header p-3 pb-0">
+                            <h6>Student Registration</h6>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="stud-reg-chart" class="chart-canvas" height="300" width="755" style="display: block; box-sizing: border-box; height: 300px; width: 755px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

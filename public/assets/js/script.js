@@ -98,3 +98,65 @@ setTimeout(function () {
     $(".alert").hide('slow');
 }, 3000);
 
+$(function(){
+    "use strict";
+    var ctx5 = document.getElementById("stud-reg-chart").getContext("2d");
+    $.getJSON('/studentregchart/', function(response){
+        new Chart(ctx5, {
+            type: "bar",
+            data: {
+              labels: [response[11].mname, response[10].mname, response[9].mname, response[8].mname, response[7].mname, response[6].mname, response[5].mname, response[4].mname, response[3].mname, response[2].mname, response[1].mname, response[0].mname],
+              datasets: [{
+                label: "Sales by age",
+                weight: 5,
+                borderWidth: 0,
+                borderRadius: 4,
+                backgroundColor: '#3A416F',
+                data: [response[11].ptot, response[10].ptot, response[9].ptot, response[8].ptot, response[7].ptot, response[6].ptot, response[5].ptot, response[4].ptot, response[3].ptot, response[2].ptot, response[1].ptot, response[0].ptot],
+                fill: false,
+                maxBarThickness: 35
+              }],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false,
+                }
+              },
+              scales: {
+                y: {
+                  grid: {
+                    drawBorder: false,
+                    display: true,
+                    drawOnChartArea: true,
+                    drawTicks: false,
+                    borderDash: [5, 5]
+                  },
+                  ticks: {
+                    display: true,
+                    padding: 10,
+                    color: '#9ca2b7'
+                  }
+                },
+                x: {
+                  grid: {
+                    drawBorder: false,
+                    display: false,
+                    drawOnChartArea: true,
+                    drawTicks: true,
+                  },
+                  ticks: {
+                    display: true,
+                    color: '#9ca2b7',
+                    padding: 10
+                  }
+                },
+              },
+            },
+          });
+    });
+});
+
+
