@@ -163,7 +163,7 @@ $(function(){
         new Chart(ctx4, {
         type: "pie",
         data: {
-            labels: ['Admission Fee', 'Batch Fee'],
+            labels: ['Admission Fee', 'Batch Fee', 'Other Income', 'Expenses'],
             datasets: [{
             label: "Projects",
             weight: 9,
@@ -171,8 +171,8 @@ $(function(){
             tension: 0.9,
             pointRadius: 2,
             borderWidth: 2,
-            backgroundColor: ['#17c1e8', '#cb0c9f'],
-            data: [response['afee'], response['bfee']],
+            backgroundColor: ['#17c1e8', '#cb0c9f', '#82d616', '#ea0606'],
+            data: [response['afee'], response['bfee'], response['income'], response['expense']],
             fill: false
             }],
         },

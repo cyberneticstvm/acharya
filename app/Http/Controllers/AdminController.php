@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Settings;
-use App\Models\BatchSyllabs;
+use App\Models\Income;
+use App\Models\Expense;
 use App\Models\Student;
 use App\Models\Syllabus;
 use App\Models\Fee;
@@ -66,7 +67,9 @@ class AdminController extends Controller
     public function studentfeechart(){
         $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
         $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
-        return array('afee' => $afee, 'bfee' => $bfee);
+        $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
+        $expenses = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
+        return array('afee' => $afee, 'bfee' => $bfee, 'income' => $income, 'expense' => $expenses);
     }
 
     public function studentcancelledchart(){

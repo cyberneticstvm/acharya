@@ -37,7 +37,7 @@
                     <div class="col-md-6">
                         <div class="card z-index-2">
                             <div class="card-header p-3 pb-0">
-                                <h6>Fee Collection Current Month</h6>
+                                <h6>Income & Expenses Current Month</h6>
                             </div>
                             <div class="card-body p-3">
                                 <div class="chart">
