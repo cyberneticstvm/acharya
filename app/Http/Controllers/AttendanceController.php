@@ -24,7 +24,7 @@ class AttendanceController extends Controller
         if($batch):
             $sheet = Attendance::where('batch', $request->batch)->whereDate('date', Carbon::today())->get();
             if($sheet->isEmpty()):
-                $students = StudentBatch::where('batch', $request->batch)->get();
+                $students = StudentBatch::where('batch', $request->batch)->where('cancelled', 0)->get();
                 $data = [];
                 foreach($students as $key => $student):
                     $data [] = [
