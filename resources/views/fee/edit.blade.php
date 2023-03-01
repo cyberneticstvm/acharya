@@ -100,6 +100,21 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="req">Pending Fee</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="fee_pending">
+                                        <option value="">Select</option>
+                                        <option value="0" {{ ($fee->fee_pending == 0) ? 'selected' : '' }}>No</option>
+                                        <option value="1" {{ ($fee->fee_pending == 1) ? 'selected' : '' }}>Yes</option>
+                                    </select>
+                                </div>
+                                @error('fee_pending')
+                                    <small class="text-danger">{{ $errors->first('fee_pending') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-submit bg-gradient-primary mt-4 mb-0">UPDATE</button>

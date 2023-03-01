@@ -17,6 +17,7 @@ class Fee extends Model
         'fee_year',
         'fee', 
         'discount_applicable',
+        'fee_pending',
         'created_by',
         'updated_by',
     ];
