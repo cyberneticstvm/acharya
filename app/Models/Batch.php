@@ -26,4 +26,8 @@ class Batch extends Model
     public function batchsyllabi(){
         return $this->hasMany(BatchSyllabs::class, 'batch');
     }
+
+    public function studentbatches(){
+        return $this->hasMany(StudentBatch::class, 'batch');
+    }
 }

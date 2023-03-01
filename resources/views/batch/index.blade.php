@@ -23,7 +23,7 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" id="datatable-basic">
                         <thead class="thead-light">
-                            <tr><th>SL No</th><th>Batch ID</th><th>Batch Name</th><th>Course Name</th><th>Syllabus</th><th>Fee</th><th>Status</th><th>Edit</th><th>Remove</th></tr>
+                            <tr><th>SL No</th><th>Batch ID</th><th>Batch Name</th><th>Active</th><th>Inactive</th><th>Total</th><th>Course Name</th><th>Fee</th><th>Status</th><th>Edit</th><th>Remove</th></tr>
                         </thead>
                         <tbody>
                             @php $slno = 1 @endphp
@@ -31,9 +31,12 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $batch->id }}</td>                             
-                                <td>{{ $batch->name }}</td>                             
+                                <td>{{ $batch->name }}</td>
+                                <td>{{ $batch->studentbatches()->count('id') }}</td>
+                                <td>{{ $batch->id }}</td>
+                                <td>{{ $batch->id }}</td>                             
                                 <td>{{ $batch->course()->find($batch->course)->name }}</td>                             
-                                <td>{{ $syllabus->whereIn('id', $batch->batchsyllabi()->pluck('syllabus'))->pluck('name')->implode(',') }}</td>                             
+                                <!--<td>{{ $syllabus->whereIn('id', $batch->batchsyllabi()->pluck('syllabus'))->pluck('name')->implode(',') }}</td>-->                             
                                 <td>{{ $batch->fee }}</td>
                                 <td>{{ ($batch->status == 1) ? 'Active' : 'Expired' }}</td>                             
                                 <td class="text-center"><a href="/batch/edit/{{ $batch->id }}"><i class="fa fa-edit text-warning"></i></a></td>
