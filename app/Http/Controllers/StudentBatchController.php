@@ -19,7 +19,7 @@ class StudentBatchController extends Controller
      */
     public function index()
     {
-        $sbs = StudentBatch::where('cancelled', 0)->get();
+        $sbs = StudentBatch::all();
         return view('student-batch.index', compact('sbs'));
     }
 

@@ -22,14 +22,16 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" id="datatable-basic">
                         <thead class="thead-light">
-                            <tr><th>SL No</th><th>Student Name</th><th>Batch Name</th><th>Date Joined</th><th>Edit</th><th>Remove</th></tr>
+                            <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Batch ID</th><th>Batch Name</th><th>Date Joined</th><th>Edit</th><th>Remove</th></tr>
                         </thead>
                         <tbody>
                             @php $slno = 1 @endphp
                             @forelse($sbs as $key => $sb)
                             <tr>
                                 <td>{{ $slno++ }}</td>
+                                <td>{{ $sb->student }}</td>                             
                                 <td>{{ $sb->student()->find($sb->student)->name }}</td>                             
+                                <td>{{ $sb->batch }}</td>                             
                                 <td>{{ $sb->batch()->find($sb->batch)->name }}</td>                             
                                 <td>{{ date('d/M/Y', strtotime($sb->date_joined)) }}</td>                          
                                 <td class="text-center"><a href="/student-batch/edit/{{ $sb->id }}"><i class="fa fa-edit text-warning"></i></a></td>
