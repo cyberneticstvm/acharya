@@ -125,6 +125,8 @@ class FeeController extends Controller
         $fees = Fee::find($id);
         $input['updated_by'] = $request->user()->id;
         $fee = Batch::find($request->batch)->value('fee');
+        echo $fee;
+        die;
         $settings = Settings::where('branch', $request->user()->branch)->first();
         if($request->discount_applicable == 1 && $settings->batch_fee_discount_percentage > 0):
             $input['fee'] = $fee - (($fee*$settings->batch_fee_discount_percentage)/100);
