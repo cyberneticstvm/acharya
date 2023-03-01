@@ -32,9 +32,9 @@
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $batch->id }}</td>                             
                                 <td>{{ $batch->name }}</td>
-                                <td class="text-end">{{ $batch->studentbatches()->where('cancelled', 0)->count('id') }}</td>
-                                <td class="text-end">{{ $batch->studentbatches()->where('cancelled', 1)->count('id') }}</td>
-                                <td class="text-end">{{ $batch->studentbatches()->count('id') }}</td>                             
+                                <td class="text-end text-success">{{ $batch->studentbatches()->where('cancelled', 0)->count('id') }}</td>
+                                <td class="text-end text-danger">{{ $batch->studentbatches()->where('cancelled', 1)->count('id') }}</td>
+                                <td class="text-end text-info">{{ $batch->studentbatches()->count('id') }}</td>                             
                                 <td>{{ $batch->course()->find($batch->course)->name }}</td>                             
                                 <!--<td>{{ $syllabus->whereIn('id', $batch->batchsyllabi()->pluck('syllabus'))->pluck('name')->implode(',') }}</td>-->                             
                                 <td>{{ $batch->fee }}</td>
