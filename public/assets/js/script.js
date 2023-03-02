@@ -24,6 +24,7 @@ $(function(){
         var col = $(this).data('col');
         var aid = $(this).data('aid');
         var val = $(this).val();
+        alert(col);
         $.ajax({
             type: 'GET',
             url: '/updateAttendance',
