@@ -20,7 +20,7 @@ $(function(){
         $('.select2').select2();
     });
 
-    $(".rad_at").click(function(){
+    $(document).on('click', '.rad_at', function(){
         var col = $(this).data('col');
         var aid = $(this).data('aid');
         var val = $(this).val();
