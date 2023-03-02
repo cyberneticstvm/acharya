@@ -55,7 +55,8 @@ class AttendanceController extends Controller
                 $attendance->where('id', $aid)->update([$col => $val]);
             });
         }catch(Exception $e){
-            throw $e;
+            //throw $e;
+            echo $e;
         }
         echo "Attendance Updated";        
     }
