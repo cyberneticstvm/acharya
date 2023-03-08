@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label class="req">Date</label>
                                 <div class="mb-3">
-                                    <input type="date" class="form-control" name="date" value="{{ ($inputs && $inputs[0]) ? $inputs[0] : date('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">
+                                    <input type="date" class="form-control" name="date" value="{{ ($inputs && $inputs[1]) ? $inputs[0] : date('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">
                                 </div>
                                 @error('date')
                                 <small class="text-danger">{{ $errors->first('date') }}</small>

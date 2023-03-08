@@ -121,7 +121,7 @@ class ReportController extends Controller
             'date' => 'required',
             'batch' => 'required',
         ]);
-        $inputs = array($request->date); $batches = Batch::where('status', 1)->get();
+        $inputs = array($request->batch, $request->date); $batches = Batch::where('status', 1)->get();
         $att = Attendance::whereDate('date', $request->date)->where('batch', $request->batch)->get();
         return view('reports.attendance-summary', compact('inputs', 'att', 'batches'));
     }
