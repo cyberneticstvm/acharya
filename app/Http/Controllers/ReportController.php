@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\Batch;
 use Illuminate\Http\Request;
 use App\Models\Income;
@@ -108,5 +109,19 @@ class ReportController extends Controller
         else:
             return redirect()->back()->with("error", "Student details not found")->withInput($request->all);
         endif;
+    }
+
+    public function attendancesummary(){
+        $inputs = []; $att = [];
+        return view('reports.attendance-summary', compact('inputs', 'att'));
+    }
+
+    public function fetchattendancesummary(Request $request){
+        $this->validate($request, [
+            'date' => 'required',
+        ]);
+        $inputs = array($request->date);
+        $att = Attendance::whereDate('date', $request->date)->get();
+        return view('reports.attendance-summary', compact('inputs', 'att'));
     }
 }

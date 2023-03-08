@@ -14,7 +14,7 @@
                             <div class="form-group">
                                 <label class="req">Date</label>
                                 <div class="mb-3">
-                                    <input type="date" class="form-control" name="date" value="{{ ($inputs && $inputs[0]) ?$inputs[0] : date('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">
+                                    <input type="date" class="form-control" name="date" value="{{ ($inputs && $inputs[0]) ? $inputs[0] : date('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">
                                 </div>
                                 @error('date')
                                 <small class="text-danger">{{ $errors->first('date') }}</small>
@@ -51,6 +51,7 @@
                                     </tr>
                                     @empty
                                     @endforelse
+                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end">{{ number_format($fee->pluck('fee')->sum(), 2) }}</td></tr>
                                     <tr><td class="h5">Income</td></tr>
                                     @php $slno = 1 @endphp
                                     @forelse($income as $key => $record)
@@ -61,6 +62,7 @@
                                     </tr>
                                     @empty
                                     @endforelse
+                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end">{{ number_format($income->pluck('fee')->sum(), 2) }}</td></tr>
                                     <tr><td class="h5">Expenses</td></tr>
                                     @php $slno = 1 @endphp
                                     @forelse($expense as $key => $record)
@@ -71,6 +73,7 @@
                                     </tr>
                                     @empty
                                     @endforelse
+                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end">{{ number_format($expense->pluck('fee')->sum(), 2) }}</td></tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>

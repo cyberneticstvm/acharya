@@ -238,6 +238,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link text-white " href="/report/attendance/summary">
+                  <i class="fa fa-calendar sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Attendance Summary</span>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link text-white " href="/report/fee">
                   <i class="fa fa-money sidenav-mini-icon"></i>
                   <span class="sidenav-normal ms-2 ps-1">Fee</span>
