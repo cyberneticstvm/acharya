@@ -12,6 +12,23 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
+                                <label class="req">Batch</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="batch">
+                                        <option value="">Select</option>
+                                        @forelse($batches as $key => $batch)
+                                            <option value="{{ $batch->id }}" {{ ($inputs && $inputs[0] == $batch->id) ? 'selected' : '' }}>{{ $batch->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                @error('batch')
+                                <small class="text-danger">{{ $errors->first('batch') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
                                 <label class="req">Date</label>
                                 <div class="mb-3">
                                     <input type="date" class="form-control" name="date" value="{{ ($inputs && $inputs[0]) ? $inputs[0] : date('Y-m-d') }}" aria-label="Date" aria-describedby="date-addon">

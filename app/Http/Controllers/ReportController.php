@@ -112,16 +112,17 @@ class ReportController extends Controller
     }
 
     public function attendancesummary(){
-        $inputs = []; $att = collect();
-        return view('reports.attendance-summary', compact('inputs', 'att'));
+        $inputs = []; $att = collect(); $batches = Batch::where('status', 1)->get();
+        return view('reports.attendance-summary', compact('inputs', 'att', 'batches'));
     }
 
     public function fetchattendancesummary(Request $request){
         $this->validate($request, [
             'date' => 'required',
+            'batch' => 'required',
         ]);
-        $inputs = array($request->date);
-        $att = Attendance::whereDate('date', $request->date)->get();
-        return view('reports.attendance-summary', compact('inputs', 'att'));
+        $inputs = array($request->date); $batches = Batch::where('status', 1)->get();
+        $att = Attendance::whereDate('date', $request->date)->where('batch', $request->batch)->get();
+        return view('reports.attendance-summary', compact('inputs', 'att', 'batches'));
     }
 }
