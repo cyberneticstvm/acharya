@@ -112,7 +112,7 @@ class ReportController extends Controller
     }
 
     public function attendancesummary(){
-        $inputs = []; $att = [];
+        $inputs = []; $att = collect();
         return view('reports.attendance-summary', compact('inputs', 'att'));
     }
 

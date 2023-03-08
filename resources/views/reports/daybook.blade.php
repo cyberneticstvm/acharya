@@ -62,7 +62,7 @@
                                     </tr>
                                     @empty
                                     @endforelse
-                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end">{{ number_format($income->pluck('fee')->sum(), 2) }}</td></tr>
+                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end">{{ number_format($income->pluck('amount')->sum(), 2) }}</td></tr>
                                     <tr><td class="h5">Expenses</td></tr>
                                     @php $slno = 1 @endphp
                                     @forelse($expense as $key => $record)
@@ -73,7 +73,7 @@
                                     </tr>
                                     @empty
                                     @endforelse
-                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end">{{ number_format($expense->pluck('fee')->sum(), 2) }}</td></tr>
+                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end">{{ number_format($expense->pluck('amount')->sum(), 2) }}</td></tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
