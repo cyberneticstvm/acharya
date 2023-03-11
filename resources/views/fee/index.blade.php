@@ -78,7 +78,7 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" id="datatable-basic">
                         <thead class="thead-light">
-                            <tr><th>SL No</th><th>Student Name</th><th>Batch Name</th><th>Fee Month</th><th>Fee Year</th><th>Paid Date</th><th>Fee</th><th>Fee Pending</th><th>Receipt</th><th>Email</th><th>Edit</th><th>Remove</th></tr>
+                            <tr><th>SL No</th><th>Student Name</th><th>Fee</th><th>Fee Pending</th><th>Receipt</th><th>Batch Name</th><th>Fee Month</th><th>Fee Year</th><th>Paid Date</th><th>Email</th><th>Edit</th><th>Remove</th></tr>
                         </thead>
                         <tbody>
                             @php $slno = 1 @endphp
@@ -86,13 +86,13 @@
                             <tr>
                                 <td>{{ $slno++ }}</td>
                                 <td>{{ $fee->student()->find($fee->student)->name }}</td>
-                                <td>{{ $fee->batch()->find($fee->batch)->name }}</td>
-                                <td>{{ DateTime::createFromFormat('!m', $fee->fee_month)->format('F') }}</td>
-                                <td class="text-end">{{ $fee->fee_year }}</td>
-                                <td>{{ date('d/M/Y', strtotime($fee->paid_date)) }}</td>                                
                                 <td class="text-end">{{ $fee->fee }}</td>
                                 <td class="text-end {{ ($fee->fee_pending == 1) ? 'text-danger' : 'text-success' }}">{{ ($fee->fee_pending == 1) ? 'Yes' : 'No' }}</td>
                                 <td class="text-center"><a href="/pdf/batch-fee/{{ $fee->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
+                                <td>{{ $fee->batch()->find($fee->batch)->name }}</td>
+                                <td>{{ DateTime::createFromFormat('!m', $fee->fee_month)->format('F') }}</td>
+                                <td class="text-end">{{ $fee->fee_year }}</td>
+                                <td>{{ date('d/M/Y', strtotime($fee->paid_date)) }}</td>                          
                                 <td class="text-center"><a href="/email/batch-fee/{{ $fee->id }}"><i class="fa fa-envelope text-success"></i></a></td>
                                 <td class="text-center"><a href="/fee/edit/{{ $fee->id }}"><i class="fa fa-edit text-warning"></i></a></td>
                                 <td class="text-center">

@@ -25,7 +25,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="datatable-basic">
                             <thead class="thead-light">
-                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Email</th><th>Mobile</th><th>Address</th><th>Photo</th><th>Branch</th><th>Receipt</th><th>Email</th><th>Edit</th><th>Assign</th></tr>
+                                <tr><th>SL No</th><th>Student ID</th><th>Student Name</th><th>Receipt</th><th>Send</th><th>Assign</th><th>Email</th><th>Mobile</th><th>Address</th><th>Photo</th><th>Branch</th><th>Edit</th></tr>
                             </thead>
                             <tbody>
                                 @php $slno = 1 @endphp
@@ -34,15 +34,16 @@
                                     <td>{{ $slno++ }}</td>
                                     <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
+                                    <td class="text-center"><a href="/pdf/admission-fee/{{ $student->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
+                                    <td class="text-center"><a href="/email/admission-fee/{{ $student->id }}"><i class="fa fa-envelope text-success"></i></a></td>
+                                    <td class="text-center"><input type="checkbox" name="students[]" value="{{ $student->id }}" /></td>
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->mobile }}</td>
                                     <td>{{ $student->address }}</td>
                                     <td class="text-center"><a href="/public/storage/photos/{{ $student->photo }}" target="_blank"><i class="fa fa-image text-info"></i></a></td>
-                                    <td>{{ $student->branch()->find($student->branch)->name }}</td>
-                                    <td class="text-center"><a href="/pdf/admission-fee/{{ $student->id }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i></a></td>
-                                    <td class="text-center"><a href="/email/admission-fee/{{ $student->id }}"><i class="fa fa-envelope text-success"></i></a></td>                                
+                                    <td>{{ $student->branch()->find($student->branch)->name }}</td>                                                                    
                                     <td class="text-center"><a href="/student/edit/{{ $student->id }}"><i class="fa fa-edit text-warning"></i></a></td>
-                                    <td class="text-center"><input type="checkbox" name="students[]" value="{{ $student->id }}" /></td>
+                                    
                                 </tr>
                                 @empty
                                 @endforelse
