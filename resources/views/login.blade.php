@@ -58,7 +58,7 @@
             <div class="col-md-6">
               <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
                 <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6 mt-5">
-                  <img src="{{ public_path().'/assets/img/acharya1.jpeg' }}" class="img-fluid" alt="" style="width:70%" />
+                  <img src="{{ public_path().'/assets/img/acharya1.jpeg' }}" class="img-fluid" alt="" style="width:72%" />
                 </div>
               </div>
             </div>
