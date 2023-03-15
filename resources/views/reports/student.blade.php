@@ -41,7 +41,7 @@
                         <p class="fw-bold">Student Name: <span class="text-primary">{{ $student->name }}</span></p>
                     </div>
                     <div class="col">
-                        <p class="fw-bold">Admission Date: <span class="text-primary">{{ date('d/M/Y', strtotime($student->value('admission_date'))) }}</span></p>
+                        <p class="fw-bold">Admission Date: <span class="text-primary">{{ date('d/M/Y', strtotime($student->admission_date)) }}</span></p>
                     </div>
                     <div class="col">
                         <p class="fw-bold">Batche(s): <span class="text-primary">{{ $batches }}</span></p>
