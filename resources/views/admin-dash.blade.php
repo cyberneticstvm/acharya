@@ -66,7 +66,7 @@
                         </div>
                         <div class="card-body mt-1">
                             <div class="numbers text-center">
-                                <h5 class="font-weight-bolder mb-0">₹{{ number_format($income, 2) }}</h5>
+                                <h5 class="font-weight-bolder text-info mb-0">₹{{ number_format($income, 2) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="card-body mt-1">
                             <div class="numbers text-center">
-                                <h5 class="font-weight-bolder mb-0">₹{{ number_format($expense, 2) }}</h5>
+                                <h5 class="font-weight-bolder text-danger mb-0">₹{{ number_format($expense, 2) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="card-body mt-1">
                             <div class="numbers text-center">
-                                <h5 class="font-weight-bolder mb-0">₹{{ number_format($profit, 2) }}</h5>
+                                <h5 class="font-weight-bolder text-success mb-0">₹{{ number_format($profit, 2) }}</h5>
                             </div>
                         </div>
                     </div>
