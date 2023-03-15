@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Branch;
 use App\Models\User;
+use App\Models\Student;
+use App\Models\Fee;
+use App\Models\Income;
+use App\Models\Expense;
+use Carbon\Carbon;
 use Hash;
 use DB;
 use Session;
@@ -38,7 +43,12 @@ class UserController extends Controller
 
     public function dash(){
         if(Auth::user()->role == 'Admin'):
-            return view('admin-dash');
+            $afee = Student::whereMonth('created_at', Carbon::now()->month)->sum('fee');
+            $bfee = Fee::whereMonth('paid_date', Carbon::now()->month)->sum('fee');
+            $income = Income::whereMonth('date', Carbon::now()->month)->sum('amount');
+            $expense = Expense::whereMonth('date', Carbon::now()->month)->sum('amount');
+            $income = $afee + $bfee + $income; $profit = $income - $expense;
+            return view('admin-dash', compact('income', 'expense', 'profit'));
         else:
             return view('staff-dash');
         endif;
