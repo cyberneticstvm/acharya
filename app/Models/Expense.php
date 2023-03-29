@@ -23,7 +23,7 @@ class Expense extends Model
         return $this->belongsTo(Branch::class, 'branch');
     }
 
-    public function head(){
+    public function heads(){
         return $this->belongsTo(Head::class, 'head');
     }
 }

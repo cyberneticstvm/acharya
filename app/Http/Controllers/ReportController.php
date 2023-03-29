@@ -9,6 +9,7 @@ use App\Models\Income;
 use App\Models\Fee;
 use App\Models\Month;
 use App\Models\Expense;
+use App\Models\Head;
 use App\Models\Student;
 use App\Models\StudentBatch;
 use Carbon\Carbon;
@@ -126,5 +127,28 @@ class ReportController extends Controller
         $inputs = array($request->batch, $request->date); $batches = Batch::where('status', 1)->get();
         $att = Attendance::whereDate('date', $request->date)->where('batch', $request->batch)->get();
         return view('reports.attendance-summary', compact('inputs', 'att', 'batches'));
+    }
+
+    public function ie(){
+        $inputs = []; $ies = collect();
+        $heads = Head::all();
+        return view('reports.ie', compact('inputs', 'ies', 'heads'));
+    }
+
+    public function iefetch(Request $request){
+        $this->validate($request, [
+            'from_date' => 'required',
+            'to_date' => 'required',
+            'type' => 'required',
+            'head' => 'required',
+        ]);
+        $inputs = array($request->from_date, $request->to_date, $request->type, $request->head);
+        $heads = Head::all();
+        if($request->type == 'Income'):
+            $ies = Income::whereBetween('date', [$request->from_date, $request->to_date])->where('head', $request->head)->get();
+        else:
+            $ies = Expense::whereBetween('date', [$request->from_date, $request->to_date])->where('head', $request->head)->get();
+        endif;
+        return view('reports.ie', compact('inputs', 'ies', 'heads'));
     }
 }

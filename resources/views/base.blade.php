@@ -261,6 +261,12 @@
                   <span class="sidenav-normal ms-2 ps-1">Student</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="/report/ie">
+                  <i class="fa fa-user sidenav-mini-icon"></i>
+                  <span class="sidenav-normal ms-2 ps-1">Income / Expense</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>

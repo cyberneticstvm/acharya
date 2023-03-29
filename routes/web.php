@@ -150,6 +150,8 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::post('/report/student', [ReportController::class, 'fetchstudent'])->name('report.student.fetch');
     Route::get('/report/attendance/summary', [ReportController::class, 'attendancesummary'])->name('report.attendance.summary');
     Route::post('/report/attendance/summary', [ReportController::class, 'fetchattendancesummary'])->name('report.attendance.summary.fetch');
+    Route::get('/report/ie', [ReportController::class, 'ie'])->name('report.ie');
+    Route::post('/report/ie', [ReportController::class, 'iefetch'])->name('report.ie.fetch');
 
     Route::get('/pdf/admission-fee/{id}', [PDFController::class, 'admissionfee'])->name('admissionfee');
     Route::get('/pdf/batch-fee/{id}', [PDFController::class, 'batchfee'])->name('batchfee');
