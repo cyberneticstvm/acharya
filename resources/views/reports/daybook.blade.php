@@ -41,7 +41,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td class="h5">Fee</td></tr>
+                                    <tr><td class="h5">Batch Fee</td></tr>
                                     @php $slno = 1 @endphp
                                     @forelse($fee as $key => $record)
                                     <tr>
@@ -52,6 +52,19 @@
                                     @empty
                                     @endforelse
                                     <tr><td colspan="2" class="text-end">Total</td><td class="text-end fw-bold">{{ number_format($fee->pluck('fee')->sum(), 2) }}</td></tr>
+
+                                    <tr><td class="h5">Admission Fee</td></tr>
+                                    @php $slno = 1 @endphp
+                                    @forelse($students as $key => $student)
+                                    <tr>
+                                        <td class="text-start">{{ $slno++ }}</td>                                
+                                        <td class="ps-4">{{ $student->name }}</td>                                
+                                        <td class="ps-4">{{ $student->fee }}</td>                                
+                                    </tr>
+                                    @empty
+                                    @endforelse
+                                    <tr><td colspan="2" class="text-end">Total</td><td class="text-end fw-bold">{{ number_format($student->pluck('fee')->sum(), 2) }}</td></tr>
+
                                     <tr><td class="h5">Income</td></tr>
                                     @php $slno = 1 @endphp
                                     @forelse($income as $key => $record)
@@ -79,7 +92,7 @@
                                     <tr>
                                         <th></th>
                                         <th class="h5 ps-4" colspan="2">Total</th>
-                                        <th colspan="1" class="text-right h5 ps-4">{{ number_format(($fee->pluck('fee')->sum()+$income->pluck('amount')->sum())-$expense->pluck('amount')->sum(), 2) }}</th>
+                                        <th colspan="1" class="text-right h5 ps-4">{{ number_format(($fee->pluck('fee')->sum()+$income->pluck('amount')->sum()+$student->pluck('fee')->sum())-$expense->pluck('amount')->sum(), 2) }}</th>
                                     </tr>
                                 </tfoot>
                             </table>

@@ -11,6 +11,7 @@ use App\Models\Month;
 use App\Models\Expense;
 use App\Models\Student;
 use App\Models\StudentBatch;
+use Carbon\Carbon;
 use DB;
 
 class ReportController extends Controller
@@ -26,9 +27,10 @@ class ReportController extends Controller
         ]);
         $inputs = array($request->date);
         $fee = Fee::whereDate('paid_date', $request->date)->get();
+        $students = Student::whereDate('created_at', Carbon::today())->where('fee', '>', 0)->get();
         $income = Income::whereDate('date', $request->date)->get();
         $expense = Expense::whereDate('date', $request->date)->get();
-        return view('reports.daybook', compact('fee', 'income', 'expense', 'inputs'));
+        return view('reports.daybook', compact('fee', 'income', 'expense', 'inputs', 'students'));
     }
 
     public function fee(){
