@@ -96,7 +96,7 @@
                                 <tfoot>
                                     <tr>
                                         <td colspan="5" class="text-end fw-bold">Total</td>
-                                        <td class="text-end fw-bold">{{ $ies->pluck('amount')->sum() }}</td>
+                                        <td class="text-end fw-bold">{{ number_format($ies->pluck('amount')->sum(), 2) }}</td>
                                     </tr>
                                 </tfoot>
                             </table>
