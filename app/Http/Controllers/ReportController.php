@@ -17,8 +17,8 @@ use DB;
 class ReportController extends Controller
 {
     public function daybook(){
-        $fee = collect();  $income = collect(); $expense = collect(); $inputs = [];
-        return view('reports.daybook', compact('fee', 'income', 'expense', 'inputs'));
+        $fee = collect();  $income = collect(); $expense = collect(); $inputs = []; $students = collect();
+        return view('reports.daybook', compact('fee', 'income', 'expense', 'inputs', 'students'));
     }
 
     public function fetchdaybook(Request $request){
