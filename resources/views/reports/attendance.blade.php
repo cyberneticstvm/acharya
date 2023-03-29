@@ -75,12 +75,12 @@
                             <table class="table table-striped table-bordered">
                                 <thead class="thead-light">
                                     <th>Student</th>
-                                    @for($i=1; $i<=$days; $i++)
-                                    <th>{{ $i }}</th>
-                                    @endfor
                                     <th class="text-success">P</th>
                                     <th class="text-danger">A</th>
                                     <th class="text-warning">L</th>
+                                    @for($i=1; $i<=$days; $i++)
+                                    <th>{{ $i }}</th>
+                                    @endfor                                    
                                 </thead>
                                 <tbody class="att">
                                     @forelse($records as $key => $record)
