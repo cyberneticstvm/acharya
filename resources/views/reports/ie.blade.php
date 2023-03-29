@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label class="req">Type</label>
                                 <div class="mb-3">
-                                    <select class="form control" name="type">
+                                    <select class="form-control" name="type">
                                         <option value="">Select</option>
                                         <option value="Income" {{ ($inputs && $inputs[2] == 'Income') ? 'selected' : '' }}>Income</option>
                                         <option value="Expense" {{ ($inputs && $inputs[2] == 'Expense') ? 'selected' : '' }}>Expense</option>
