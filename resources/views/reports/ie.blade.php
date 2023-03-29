@@ -88,7 +88,7 @@
                                         <td>{{ $inputs[2] }}</td>
                                         <td>{{ $ie->description }}</td>
                                         <td>{{ date('d/M/Y', strtotime($ie->date)) }}</td>
-                                        <td>{{ $ie->amount }}</td>
+                                        <td class="text-end">{{ $ie->amount }}</td>
                                     </tr>
                                     @empty
                                     @endforelse
