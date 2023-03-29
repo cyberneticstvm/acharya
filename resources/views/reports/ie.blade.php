@@ -93,6 +93,12 @@
                                     @empty
                                     @endforelse
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5" class="text-end fw-bold">Total</td>
+                                        <td class="text-end fw-bold">{{ $ies->pluck('amount')->sum() }}</td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
