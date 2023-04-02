@@ -30,7 +30,7 @@
                             @forelse($expenses as $key => $expense)
                             <tr>
                                 <td>{{ $slno++ }}</td>
-                                <td>{{ $expense->head()->find($expense->head)->name }}</td>                             
+                                <td>{{ $expense->heads()->find($expense->head)->name }}</td>                             
                                 <td>{{ $expense->amount }}</td>                             
                                 <td>{{ $expense->description }}</td>                             
                                 <td>{{ date('d/M/Y', strtotime($expense->date)) }}</td>                             
