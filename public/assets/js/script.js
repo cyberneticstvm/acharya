@@ -73,9 +73,9 @@ $(function(){
                 a += 1;
             }
         });
-        dis.find("td:nth-child(2)").text(l).addClass('text-center text-warning');
-        dis.find("td:nth-child(3)").text(a).addClass('text-center text-danger');
-        dis.find("td:nth-child(4)").text(p).addClass('text-center text-success');;
+        dis.find("td:nth-child(3)").text(l).addClass('text-center text-warning');
+        dis.find("td:nth-child(4)").text(a).addClass('text-center text-danger');
+        dis.find("td:nth-child(5)").text(p).addClass('text-center text-success');;
     })
 
     $(".bforSyl").change(function(){

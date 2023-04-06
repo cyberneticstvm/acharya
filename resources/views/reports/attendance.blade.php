@@ -75,6 +75,7 @@
                             <table class="table table-striped table-bordered">
                                 <thead class="thead-light">
                                     <th>Student</th>
+                                    <th>Mobile</th>
                                     <th class="text-warning">L</th>
                                     <th class="text-danger">A</th>
                                     <th class="text-success">P</th>
@@ -86,6 +87,7 @@
                                     @forelse($records as $key => $record)
                                     <tr>
                                         <td>{{ $record->student()->find($record->student)->name }}</td>
+                                        <td>{{ $record->student()->find($record->student)->mobile }}</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
