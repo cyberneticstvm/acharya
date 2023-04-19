@@ -35,8 +35,6 @@ Route::get('/', function () {
 Route::post('/', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/createuser', [UserController::class, 'createuser'])->name('createuser');
-
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
 
     Route::get('/branch', [BranchController::class, 'index'])->name('branch');

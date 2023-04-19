@@ -163,18 +163,4 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('user')->with('success', 'User Deleted Successfully!');
     }
-
-    public function createuser(){
-        $students = Student::all();
-        foreach($students as $key => $stud):
-            $st['name'] = $stud->name;
-            $st['email'] = $stud->email;
-            $st['mobile'] = $stud->mobile;
-            $st['password'] = Hash::make($stud->mobile);
-            $st['role'] = 'Student';
-            $st['status'] = 'Active';
-            $st['branch'] = 1;
-            User::create($st);
-        endforeach;
-    }
 }
