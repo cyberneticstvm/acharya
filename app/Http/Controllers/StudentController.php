@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Branch;
 use App\Models\Batch;
+use App\Models\User;
+use Hash;
 use DB;
 
 class StudentController extends Controller
@@ -61,8 +63,15 @@ class StudentController extends Controller
             $input['photo'] = $img->getClientOriginalName();                                 
         endif;
         $input['created_by'] = Auth::user()->id;        
-        $input['updated_by'] = Auth::user()->id;        
-        Student::create($input);
+        $input['updated_by'] = Auth::user()->id;
+        $input['status'] = 'Active';
+        $input['branch'] = 1;
+        $input['role'] = 'Student';
+        $input['password'] = Hash::make($request->mobile);
+        DB::transaction(function() use ($input) {
+            Student::create($input);
+            User::create($input);
+        });        
         return redirect()->route('student')->with('success', 'Student Created Successfully!');
     }
 
@@ -109,15 +118,18 @@ class StudentController extends Controller
             'branch' => 'required',
         ]);
         $input = $request->all();
-        $student = Student::find($id);
+        $student = Student::find($id); $user = User::where('email', $student->email)->first();
         if($request->hasFile('photo')):
             $img = $request->file('photo');
             $fname = 'photos/'.$img->getClientOriginalName();
             Storage::disk('public')->putFileAs($fname, $img, '');
             $input['photo'] = $img->getClientOriginalName();                                 
         endif;
-        $input['updated_by'] = Auth::user()->id;        
-        $student->update($input);
+        $input['updated_by'] = Auth::user()->id;
+        DB::transaction(function() use ($input, $student, $user) {
+            $student->update($input);
+            $user->update($input);
+        });
         return redirect()->route('student')->with('success', 'Student Updated Successfully!');
     }
 
